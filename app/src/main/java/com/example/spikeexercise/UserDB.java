@@ -39,7 +39,7 @@ public class UserDB extends SQLiteOpenHelper {
     /* create user table */
     public void createTable() {
         try {
-            String sql = "CREATE TABLE " + getTableName() + "(id text, pw text)";
+            String sql = "CREATE TABLE " + getTableName() + "(id text, pw text, username text, intro text)";
             mainDB.execSQL(sql);
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,7 +51,7 @@ public class UserDB extends SQLiteOpenHelper {
         Log.i("tag", "INSERT USER");
         getReadableDatabase().beginTransaction();
         try {
-            String sql = "INSERT INTO " + TABLENAME + " (id, pw) values('" + id + "','" + pw + "')";
+                String sql = "INSERT INTO " + TABLENAME + " (id, pw) values('" + id + "','" + pw + "')";
             mainDB.execSQL(sql);
             mainDB.setTransactionSuccessful();
         } catch(Exception e) {
@@ -172,6 +172,47 @@ public class UserDB extends SQLiteOpenHelper {
 
         // success to sign in
         return true;
+    }
+
+
+    /* update profile */
+    public boolean checkUpdateProfile(Context context, String id, String username, String intro, String updatedPW) {
+
+        if(username.length() == 0 || intro.length() == 0 || updatedPW.length() == 0) {
+            Toast.makeText(context, "UpdateError\nPlease fill in all the  blank.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+        cursor.close();
+
+        update(id, username, intro, updatedPW);
+
+
+
+        // update profile
+        return true;
+
+    }
+
+
+    /* update value */
+
+    public void update(String id, String username, String intro, String updatePW) {
+
+        Log.i("tag", "UPDATE USER");
+        getReadableDatabase().beginTransaction();
+        try {
+            String sql = "UPDATE " + getTableName() + " SET username = " + username + ", intro = "
+                    + intro + ", pw = " + updatePW + "WHERE id = " + id + ";";
+            mainDB.execSQL(sql);
+            mainDB.setTransactionSuccessful();
+        } catch(Exception e) {
+            e.printStackTrace();
+        } finally {
+            mainDB.endTransaction();
+        }
+
     }
 
 

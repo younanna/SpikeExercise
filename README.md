@@ -63,12 +63,30 @@ What to do
 - finalize database/data flow
 
 
-# Journal 6: setting interface design (time to take a break)
+## Journal 6: setting interface design (time to take a break)
 Since sign in and login pages are almost set, I arrange buttons and text boxes on pages to fit into my test device, Nexus 5. Also I change color and font size! It looks good by now. All the functions implemented before still works well.
 Then, I move on to create an interface of home page. On the home page, user id will be displayed for now. There will be buttons that move to different pages. Also, there should be log out button!!
 After creating the home page, it is time to delete login_sub page, which was used for testing purpose.
 
 The user ID successfully displayed on the home page. I push the project before I remove login_sub layout to make sure nothing goes wrong from this :)
+
+## Journal 7: Create Edit user information page
+By now, three of requirements are met.
+1. Create an account
+2. Log in with a valid username and password
+3. Logout and allow other users to log in
+
+Last requirement is: 4. Update profile information (username, password, and all the information displayed on the various tabs/button/delineations within the system).
+For now, user information includes ID and password. I need to add username as user information. Let's consider "About me" page. Following features will be implemented to get user info.
+Edit profile page:
+- username
+- short sentences about myself
+
+Edit profile page is added. User can put username, short sentences about myself, and password to edit. The blank input is not allowed. I have not test if it successfully update user profile.
+Next: I will create user profile page to test user profile is successfully updated.
+
+## Journal 8: User Profile page
+
 
 
 
