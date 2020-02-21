@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SpikeExercise</string>
+    <string name="Login_subActivity">Login_subActivity</string>
 </resources>
