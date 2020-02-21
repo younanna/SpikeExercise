@@ -2,14 +2,14 @@
  Spike Exercise for Software Engineering
 
 
-ToDo
+#ToDo
 1. Create an account
 2. Log in with a valid username and password
 3. Logout and allow other users to log in
 4. Update profile information (username, password, and all the information displayed on the various tabs/button/delineations within the system)
 
 
-Extra ToDo \n
+#Extra ToDo \n
 5. Share your profile with other users in the system; create friend lists; allow friends to suggest edits to the "All about me" system content
 6. Upload and store pictures in the system database
 
