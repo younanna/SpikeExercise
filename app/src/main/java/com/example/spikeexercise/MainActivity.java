@@ -59,13 +59,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "You are logged in!", Toast.LENGTH_SHORT).show();
 
             String id = text_id.getText().toString();
-            String pw = text_pw.getText().toString();
 
             // move to which page?
-            Intent intent = new Intent(getApplicationContext(), Login_subActivity.class);
+            Intent intent = new Intent(getApplicationContext(), homepage.class);
             // put&pass data
             intent.putExtra("Entered id", id);
-            intent.putExtra("Entered password", pw);
             startActivity(intent);
             finish();
         }

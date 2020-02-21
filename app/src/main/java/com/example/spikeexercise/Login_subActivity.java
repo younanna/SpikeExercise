@@ -32,6 +32,7 @@ public class Login_subActivity extends AppCompatActivity {
         textView_pw.setText(String.valueOf(pw));
 
     }
+
     public void goback01(View v){
         Intent intent = new Intent(getApplicationContext(), Login_subActivity.class);
         startActivity(intent);

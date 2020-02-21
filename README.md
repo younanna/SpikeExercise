@@ -13,7 +13,10 @@ ToDo
 6. (Extra) Upload and store pictures in the system database
 
 Language used: Java, SQL
+
 Program used: Android Studio, SQLite
+
+Device used for testing: Nexus 5 API 29
 
 ## Journal 1
 Since it is my first time developing android application, I started with installing Android Studio and learned how to run it on the android virtual device. I created a basic features such as changing text and creating a button on the interface.
@@ -44,4 +47,36 @@ I struggled to connect all database helper, signin, login sub and login pages to
 
 More idea for future: which one is better? using local database that is created within the application by coding OR using a database created from SQLite (can view all the available data on SQLite and use same database file on every device)
 - I will set overall structures for now, and think about it later..
+
+## Journal 5: End of a day progress and what to do next
+Completed
+- sign in page
+- login page
+- demo version of home page
+- local database
+
+What to do
+- Create homepage
+    - consider menu
+- use id as key (check duplicate)
+- create table for each id (user)
+- finalize database/data flow
+
+
+# Journal 6: setting interface design (time to take a break)
+Since sign in and login pages are almost set, I arrange buttons and text boxes on pages to fit into my test device, Nexus 5. Also I change color and font size! It looks good by now. All the functions implemented before still works well.
+Then, I move on to create an interface of home page. On the home page, user id will be displayed for now. There will be buttons that move to different pages. Also, there should be log out button!!
+After creating the home page, it is time to delete login_sub page, which was used for testing purpose.
+
+The user ID successfully displayed on the home page. I push the project before I remove login_sub layout to make sure nothing goes wrong from this :)
+
+
+
+
+
+
+
+
+
+
 

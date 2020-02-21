@@ -51,4 +51,14 @@ public class signin extends AppCompatActivity {
 
     }
 
+    public void goLogin(View v) {
+
+
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
+
+
+    }
+
 }
