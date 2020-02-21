@@ -98,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/User_ID" />
 
     <Button
-        android:id="@+id/btn_signin"
+        android:id="@+id/btnSignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="159dp"
@@ -107,6 +107,7 @@
         android:layout_marginEnd="164dp"
         android:layout_marginRight="164dp"
         android:layout_marginBottom="342dp"
+        android:onClick="Signin01"
         android:text="SignIn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

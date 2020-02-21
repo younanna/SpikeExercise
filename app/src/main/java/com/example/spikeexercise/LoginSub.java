@@ -15,7 +15,8 @@ public class LoginSub extends AppCompatActivity {
         setContentView(R.layout.activity_login_sub);
     }
     public void goback01(View v){
-
-        finish();
+//        Intent intent = new Intent(getApplicationContext(), Login_subActivity.class);
+//        startActivity(intent);
+//        finish();
     }
 }

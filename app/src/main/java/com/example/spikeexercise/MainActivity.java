@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     EditText text_id;
     EditText text_pw;
     Button btnLogin;
-    //Button btnSignin;
+    Button btnSignin;
 
     UserDB dbhelper;
     Cursor cursor;
@@ -51,12 +51,21 @@ public class MainActivity extends AppCompatActivity {
     /* perform when login button is clicked */
     public void Login01(View v) {
 
+
+
+
         if(dbhelper.checkLogin(
                 MainActivity.this, text_id.getText().toString(), text_pw.getText().toString())) {
             Toast.makeText(MainActivity.this, "You are logged in!", Toast.LENGTH_SHORT).show();
 
+            String id = text_id.getText().toString();
+            String pw = text_pw.getText().toString();
+
             // move to which page?
             Intent intent = new Intent(getApplicationContext(), Login_subActivity.class);
+            // put&pass data
+            intent.putExtra("Entered id", id);
+            intent.putExtra("Entered password", pw);
             startActivity(intent);
             finish();
         }
@@ -78,6 +87,14 @@ public class MainActivity extends AppCompatActivity {
 //
 //
 //        startActivity(intent_01);
+    }
+
+    public void Signin01(View v) {
+
+        Intent intent = new Intent(getApplicationContext(), signin.class);
+        startActivity(intent);
+
+
     }
 
 }

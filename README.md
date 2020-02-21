@@ -35,3 +35,13 @@ More idea for future: limit character type for keyboard input & use Firebase for
 
 Source: https://developer.android.com/training/data-storage
 Source: https://developer.android.com/training/data-storage/sqlite
+
+
+## Journal 4: Create sign in page
+Now, overall structures of login page and sign in page are set. It successfully store user id and password when a user creates an account. Once id and password are stored, a user can sign in and view id and password on a login sub-page.
+User id and password are correctly displayed on the screen. Now, I will use this displaying function to change login sub-page into the main page.
+I struggled to connect all database helper, signin, login sub and login pages together, but by now, I understand how database is used and functions are working by now.
+
+More idea for future: which one is better? using local database that is created within the application by coding OR using a database created from SQLite (can view all the available data on SQLite and use same database file on every device)
+- I will set overall structures for now, and think about it later..
+
