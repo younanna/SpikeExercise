@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginSub"></activity>
+        <activity android:name=".signin"></activity>
+        <activity android:name=".LoginSub" />
         <activity
             android:name=".Login_subActivity"
             android:label="@string/Login_subActivity"
