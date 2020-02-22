@@ -67,4 +67,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_id" />
 
+    <Button
+        android:id="@+id/btn_profile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="viewProfile01"
+        android:text="View Profile"
+        app:layout_constraintEnd_toEndOf="@+id/btn_editProfile"
+        app:layout_constraintStart_toStartOf="@+id/btn_editProfile"
+        app:layout_constraintTop_toBottomOf="@+id/btn_editProfile" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

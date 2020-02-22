@@ -86,6 +86,9 @@ Edit profile page is added. User can put username, short sentences about myself,
 Next: I will create user profile page to test user profile is successfully updated.
 
 ## Journal 8: User Profile page
+Finally!! I can view profile. Even after I log out and log in again, I can see stored profile. I really struggled to make it works. I can't remember what changes I made, but I made a lot of change to make it.
+Connecting and using database on Java is not simple as I thought. It took 5 hours to figure it out, but it was really valuable time. My application is simple, but I satisfy with it, since I can use real database on application now!
+
 
 
 

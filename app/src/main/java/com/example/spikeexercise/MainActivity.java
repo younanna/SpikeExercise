@@ -18,16 +18,22 @@ public class MainActivity extends AppCompatActivity {
 
     EditText text_id;
     EditText text_pw;
+    EditText text_username;
+    EditText text_intro;
     Button btnLogin;
     Button btnSignin;
 
     UserDB dbhelper;
     Cursor cursor;
+    String username;
+    String intro;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Init();
     }
@@ -40,18 +46,21 @@ public class MainActivity extends AppCompatActivity {
         //btnSignin = (Button)findViewById(R.id.btn_signin);
         dbhelper = new UserDB(
                 MainActivity.this,
-                UserDB.getTableName(),
+                "myUserDataBase.db",
                 null,
                 UserDB.getVersion());
 
-        // limit keyboard input char type ??
+
+
 
     }
 
+
+    //public void initailizeDB() { }
+
+
     /* perform when login button is clicked */
     public void Login01(View v) {
-
-
 
 
         if(dbhelper.checkLogin(
@@ -60,12 +69,27 @@ public class MainActivity extends AppCompatActivity {
 
             String id = text_id.getText().toString();
             String pw = text_pw.getText().toString();
+//            String username = "younkyforky";
+//            String intro = "Hi";
+
+            String[] profile = dbhelper.getProfile(id);
 
             // move to which page?
             Intent intent = new Intent(getApplicationContext(), homepage.class);
             // put&pass data
-            intent.putExtra("Entered id", id);
-            intent.putExtra("Entered pw", pw);
+//            intent.putExtra("User id", id);
+//            intent.putExtra("User pw", pw);
+//
+//            intent.putExtra("User name", username);
+//            intent.putExtra("User intro", intro);
+
+            intent.putExtra("User id", profile[0]);
+            intent.putExtra("User pw", profile[1]);
+            intent.putExtra("User name", profile[2]);
+            intent.putExtra("User intro", profile[3]);
+//
+//            intent.putExtra("User intro", intro);
+
             startActivity(intent);
             finish();
         }

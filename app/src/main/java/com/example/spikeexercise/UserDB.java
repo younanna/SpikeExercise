@@ -10,7 +10,12 @@ import android.widget.Toast;
 
 public class UserDB extends SQLiteOpenHelper {
 
-    private static final String TABLENAME = "Users";
+    private static final String USERID ="id";
+    private static final String USERPW ="pw";
+    private static final String USERNAME ="username";
+    private static final String USERINTRO ="intro";
+
+    private static final String TABLENAME = "myUsers";
     private static final int VERSION = 1;
 
     SQLiteDatabase mainDB;
@@ -39,7 +44,7 @@ public class UserDB extends SQLiteOpenHelper {
     /* create user table */
     public void createTable() {
         try {
-            String sql = "CREATE TABLE " + getTableName() + "(id text, pw text, username text, intro text)";
+            String sql = "CREATE TABLE " + TABLENAME + "(id text PRIMARY KEY, pw text, username text, intro text)";
             mainDB.execSQL(sql);
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,11 +52,12 @@ public class UserDB extends SQLiteOpenHelper {
     }
 
     /* insert id and password into the main database */
-    public void insert(String id, String pw) {
+    public void insertSignin(String id, String pw, String username, String intro) {
         Log.i("tag", "INSERT USER");
         getReadableDatabase().beginTransaction();
         try {
-                String sql = "INSERT INTO " + TABLENAME + " (id, pw) values('" + id + "','" + pw + "')";
+            String sql = "INSERT INTO " + TABLENAME + " (id, pw, username, intro) " +
+                        "VALUES('" + id + "','" + pw + "','" + username + "','" + intro + "');";
             mainDB.execSQL(sql);
             mainDB.setTransactionSuccessful();
         } catch(Exception e) {
@@ -79,18 +85,17 @@ public class UserDB extends SQLiteOpenHelper {
 
     /* getter methods */
 
-    public static String getTableName() {
-        return TABLENAME;
-    }
 
+    public static String getTableName() {return TABLENAME; }
     public static int getVersion() {
         return VERSION;
     }
 
     /* check if id exist in database */
     public boolean checkID(String id) {
-        String sql = "SELECT id FROM " + getTableName() + " WHERE id = '" + id + "'";
+        String sql = "SELECT id FROM " + TABLENAME + " WHERE id = '" + id + "'";
         cursor = getCursor(sql);
+
         if (cursor.getCount() != 1) {
             return false;
         }
@@ -101,7 +106,7 @@ public class UserDB extends SQLiteOpenHelper {
 
     /* check if password for corresponding id is correct */
     public boolean checkPW(String id, String pw) {
-        String sql = "SELECT pw FROM " + getTableName() + " WHERE id = '" + id + "'";
+        String sql = "SELECT pw FROM " + TABLENAME + " WHERE id = '" + id + "'";
 
         cursor = getCursor(sql);
         cursor.moveToNext();
@@ -153,10 +158,10 @@ public class UserDB extends SQLiteOpenHelper {
     }
 
     /* Signin checking */
-    public boolean checkSignin(Context context, String id, String pw) {
-        if(!checkEmptyIDandPW(id, pw)) {
+    public boolean checkSignin(Context context, String id, String pw, String username, String intro) {
+        if(id.length() == 0 && pw.length() == 0 && username.length() == 0 && intro.length() == 0) {
             Toast.makeText(context,
-                    "SignInError\nPlease enter ID or password.", Toast.LENGTH_SHORT).show();
+                    "SignInError\nPlease enter all the user information.", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -168,7 +173,7 @@ public class UserDB extends SQLiteOpenHelper {
 
         cursor.close();
 
-        insert(id,pw);
+        insertSignin(id,pw,username, intro);
 
         // success to sign in
         return true;
@@ -203,8 +208,8 @@ public class UserDB extends SQLiteOpenHelper {
         Log.i("tag", "UPDATE USER");
         getReadableDatabase().beginTransaction();
         try {
-            String sql = "UPDATE " + getTableName() + " SET username = " + username + ", intro = "
-                    + intro + ", pw = " + updatePW + "WHERE id = " + id + ";";
+            String sql = "UPDATE " + TABLENAME + " SET username = '" + username + "', intro = '"
+                    + intro + "', pw = '" + updatePW + "' WHERE id = '" + id + "';";
             mainDB.execSQL(sql);
             mainDB.setTransactionSuccessful();
         } catch(Exception e) {
@@ -214,6 +219,33 @@ public class UserDB extends SQLiteOpenHelper {
         }
 
     }
+
+
+    /* get profile information */
+
+    public String[] getProfile(String id) {
+
+        String sql = "SELECT * FROM " + TABLENAME + " WHERE id = '" + id + "'";
+        cursor = mainDB.rawQuery(sql, null);
+
+        String[] profile = new String[4];
+        if(cursor.getCount()>0){
+            while(cursor.moveToNext()){
+
+                profile[0] = cursor.getString(0);
+                profile[1] = cursor.getString(1);
+                profile[2] = cursor.getString(2);
+                profile[3] = cursor.getString(3);
+
+            }
+        }
+
+
+        // there is matching id
+        return profile;
+
+    }
+
 
 
 

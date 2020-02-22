@@ -64,6 +64,14 @@ public class editProfile extends AppCompatActivity {
              finish();
         }
     }
+
+    public void goback02(View v) {
+        Intent intent = new Intent(getApplicationContext(), homepage.class);
+        intent.putExtra("User id", id);
+        intent.putExtra("User pw", pw);
+        startActivity(intent);
+        finish();
+    }
 }
 
 

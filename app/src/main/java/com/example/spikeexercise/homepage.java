@@ -12,6 +12,8 @@ public class homepage extends AppCompatActivity {
 
     String id;
     String pw;
+    String username;
+    String intro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +29,12 @@ public class homepage extends AppCompatActivity {
     public void homepage_Init() {
 
         TextView textView_id = (TextView) findViewById(R.id.textView_id);
-        Intent intent_01 = getIntent();
-        id = intent_01.getStringExtra("Entered id");
-        pw = intent_01.getStringExtra("Entered pw");
+        Intent intent = getIntent();
+        id = intent.getStringExtra("User id");
+        pw = intent.getStringExtra("User pw");
+        username = intent.getStringExtra("User name");
+        intro = intent.getStringExtra("User intro");
+        //username = intent.getStringExtra("User username");
         textView_id.setText(String.valueOf(id));
 
     }
@@ -47,6 +52,17 @@ public class homepage extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), editProfile.class);
         intent.putExtra("User id", id);
         intent.putExtra("User pw", pw);
+        startActivity(intent);
+        finish();
+    }
+
+    /* move to view profile page */
+    public void viewProfile01(View v) {
+        Intent intent = new Intent(getApplicationContext(), profile.class);
+        intent.putExtra("User id", id);
+        intent.putExtra("User name", username);
+        intent.putExtra("User intro", intro);
+
         startActivity(intent);
         finish();
     }
