@@ -90,7 +90,11 @@ Finally!! I can view profile. Even after I log out and log in again, I can see s
 Connecting and using database on Java is not simple as I thought. It took 5 hours to figure it out, but it was really valuable time. My application is simple, but I satisfy with it, since I can use real database on application now!
 
 
-
+## LAST Journal 9: Update profile function
+I success to update the profile, but it has viewing problem after updating profile. I spent too much time on annoying error, misreading sql statement String variable. Declaring string variable causes such a huge problem.
+I think it is easy to be fixed. Since I spent unexpectedly long time to fix database problem, I do not have time to fix it.
+But I will fix it even after this project ends. I think I know the solution, using getter method instead of indent.putExtra(variable). Since I initially pass around the data between the activities/pages, I need to fix some code to change it to get data with sql query.
+Overall, it was really valuable experience, since I did not have an experience of developing mobile application. It helps me to be more engaged in our team project as project manager and also backend :)
 
 
 

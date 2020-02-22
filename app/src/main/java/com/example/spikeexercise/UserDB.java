@@ -1,5 +1,6 @@
 package com.example.spikeexercise;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,10 +11,10 @@ import android.widget.Toast;
 
 public class UserDB extends SQLiteOpenHelper {
 
-    private static final String USERID ="id";
-    private static final String USERPW ="pw";
-    private static final String USERNAME ="username";
-    private static final String USERINTRO ="intro";
+//    private static final String USERID ="id";
+//    private static final String USERPW ="pw";
+//    private static final String USERNAME ="username";
+//    private static final String USERINTRO ="intro";
 
     private static final String TABLENAME = "myUsers";
     private static final int VERSION = 1;
@@ -189,7 +190,7 @@ public class UserDB extends SQLiteOpenHelper {
         }
 
 
-        cursor.close();
+//        cursor.close();
 
         update(id, username, intro, updatedPW);
 
@@ -205,18 +206,21 @@ public class UserDB extends SQLiteOpenHelper {
 
     public void update(String id, String username, String intro, String updatePW) {
 
-        Log.i("tag", "UPDATE USER");
-        getReadableDatabase().beginTransaction();
+        getWritableDatabase().beginTransaction();
         try {
-            String sql = "UPDATE " + TABLENAME + " SET username = '" + username + "', intro = '"
-                    + intro + "', pw = '" + updatePW + "' WHERE id = '" + id + "';";
-            mainDB.execSQL(sql);
+            //String sql = "UPDATE " + TABLENAME + " SET username = '" + username + "', intro = '"
+                    //+ intro + "', pw = '" + updatePW + "' WHERE id = '" + id + "'";
+
+
+            String sql1 = "UPDATE " + TABLENAME + " SET pw = '" + updatePW + "', username = '" + username + "', intro = '" + intro + "' WHERE id = '" + id + "';";
+            mainDB.execSQL(sql1);
             mainDB.setTransactionSuccessful();
         } catch(Exception e) {
             e.printStackTrace();
         } finally {
             mainDB.endTransaction();
         }
+
 
     }
 
